@@ -1,56 +1,37 @@
 package com.example.myapp;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+//import android.support.v4.app.FragmentActivity;
 
-public class SecondActivity extends AppCompatActivity {
-    private Button Home;
-    private Button Office;
-    private Button None;
+import androidx.fragment.app.FragmentActivity;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class SecondActivity extends FragmentActivity implements OnMapReadyCallback {
+
+    private GoogleMap mMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
-        Home=(Button)findViewById(R.id.bHome);
-        Office=(Button)findViewById(R.id.bOffice);
-        None=(Button)findViewById(R.id.bNone);
-
-        Home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enterHome();
-            }
-        });
-        Office.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enterOffice();
-            }
-        });
-        None.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                enterNone();
-            }
-        });
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
 
-    private void enterHome(){
-        Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-        startActivity(intent);
-    }
-    private void enterOffice(){
-        Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-        startActivity(intent);
-    }
-    private void enterNone(){
-        Intent intent = new Intent(SecondActivity.this, ThirdActivity.class);
-        startActivity(intent);
-    }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
 
+        // Add a marker in Kathmandu, Nepal, and move the camera.
+        LatLng Nepal = new LatLng(27.709399, 85.318577);
+        mMap.addMarker(new MarkerOptions().position(Nepal).title("Marker in Kathmandu"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Nepal));
+    }
 }

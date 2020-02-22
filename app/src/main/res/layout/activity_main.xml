@@ -54,16 +54,17 @@
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="MyMap"
-        android:textColor="#DDE9EE"
+        android:text="GO"
+        android:textColor="@color/colorPrimary"
         android:textColorHint="#00181111"
+        android:textColorLink="@color/colorPrimaryDark"
         android:textSize="45sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
+        app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.104" />
+        app:layout_constraintVertical_bias="0.111" />
 
     <TextView
         android:id="@+id/tvemail"
