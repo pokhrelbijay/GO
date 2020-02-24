@@ -7,14 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
-import java.util.jar.Attributes;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private EditText Email;
     private EditText Password;
     private Button SignIn;
     private int counter = 5;
+    private TextView SignUp;
 
 
     @Override
@@ -24,7 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
          Email = (EditText)findViewById(R.id.etEmail);
          Password = (EditText)findViewById(R.id.etPassword);
-         SignIn = (Button)findViewById(R.id.bSignIn);
+         SignIn = (Button)findViewById(R.id.SignUp);
+         SignUp = (TextView) findViewById(R.id.signup);
 
          SignIn.setOnClickListener(new View.OnClickListener() {
              @Override
@@ -33,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+            SignUp.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    createAccount();
+
+                }
+        });
+
 
     }
 
@@ -49,5 +58,10 @@ public class MainActivity extends AppCompatActivity {
                 SignIn.setEnabled(false);
             }
         }
+    }
+
+    private void createAccount(){
+            Intent intent = new Intent(MainActivity.this, SignUp.class);
+            startActivity(intent);
     }
 }
